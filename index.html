@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>{{.Title}}</title>
+  <style>
+    div.fill-screen {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      text-align: center;
+    }
+    img.make-it-fit {
+      max-width: 99%;
+      max-height: 99%;
+    }
+  </style>
+</head>
+<body>
+  <!-- <ul> -->
+    <!-- {{range $i := .Filenames}} -->
+    <!-- <li><a href={{$i}}>{{$i}}</a></li> -->
+    <!-- <li><img src={{$i}} alt=""></li> -->
+    <!-- {{end}} -->
+  <div class='fill-screen'>
+    <img class='make-it-fit' id="demo" src="" alt="" onclick="nextImage()">
+    <button type="button" onclick="prevImage()">Previous</button>
+    <button type="button" onclick="nextImage()">Next</button>
+  </div>
+  <!-- </ul> -->
+  <!-- <img src="1465403934912.png" alt=""> -->
+  <script type="text/javascript">
+
+    var images = {{.Filenames}};  //list of images
+    var count = 0;
+    document.getElementById("demo").src = images[0];  //start page with initial image
+
+
+    function nextImage() {
+      count = (count+1)%images.length;
+      document.getElementById("demo").src = images[count];
+    }
+
+    function prevImage() {
+      count = count-1;
+      if(count == -1) count = count + images.length;
+      document.getElementById("demo").src = images[count];
+    }
+
+  </script>
+</body>
+</html>
