@@ -18,21 +18,61 @@
       max-width: 99%;
       max-height: 99%;
     }
+    body {
+      font-family: Arial;
+      color: white;
+    }
+
+    .split {
+      height: 100%;
+      width: 50%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    .left {
+      left: 0;
+      background-color: #111;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .right {
+      right: 0;
+      background-color: red;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .centered img {
+      width: 150px;
+      border-radius: 50%;
+    }
+
   </style>
 </head>
 <body>
-  <!-- <ul> -->
-    <!-- {{range $i := .Filenames}} -->
-    <!-- <li><a href={{$i}}>{{$i}}</a></li> -->
-    <!-- <li><img src={{$i}} alt=""></li> -->
-    <!-- {{end}} -->
+
   <div class='fill-screen'>
     <img class='make-it-fit' id="demo" src="" alt="" onclick="nextImage()">
-    <button type="button" onclick="prevImage()">Previous</button>
-    <button type="button" onclick="nextImage()">Next</button>
+   <!--  <button class='make-it-fit' type="button" onclick="prevImage()">Previous</button>
+    <button class='make-it-fit' type="button" onclick="nextImage()">Next</button> -->
   </div>
-  <!-- </ul> -->
-  <!-- <img src="1465403934912.png" alt=""> -->
+
+  <div class="split left" onclick="prevImage()"></div>
+  <div class="split right" onclick="nextImage()"></div>
+
   <script type="text/javascript">
 
     var images = {{.Filenames}};  //list of images
